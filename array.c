@@ -41,13 +41,13 @@ void display_data(FILE *out, unsigned int count, unsigned int *data)
         num_columns = MAX_COLUMNS;
     }
     // Printing the data in the correct format
-    for (int i = 0; i <= num_columns; ++i)
+    for (int i = 0; i < num_columns; ++i)
     {
         fprintf(out, " %d ", i);
     }
 
     int num_rows = 0;
-    for (int i = 0; i < count; ++i)
+    for (unsigned int i = 0; i < count; ++i)
     {
         if (i % MAX_COLUMNS == 0)
         {

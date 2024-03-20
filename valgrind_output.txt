@@ -1,0 +1,55 @@
+==187096== Memcheck, a memory error detector
+==187096== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==187096== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==187096== Command: ./project1 input-1.txt output.txt
+==187096== Parent PID: 180843
+==187096== 
+==187096== Invalid read of size 4
+==187096==    at 0x10950E: check_valid_mesa_in_range (mesa.c:15)
+==187096==    by 0x10974C: find_mesa (mesa.c:68)
+==187096==    by 0x1093EC: main (main.c:53)
+==187096==  Address 0x5243600 is 0 bytes after a block of size 320 alloc'd
+==187096==    at 0x4E050C5: malloc (vg_replace_malloc.c:442)
+==187096==    by 0x1099A6: create_array (array.c:9)
+==187096==    by 0x109347: main (main.c:34)
+==187096== 
+==187096== 
+==187096== HEAP SUMMARY:
+==187096==     in use at exit: 728 bytes in 3 blocks
+==187096==   total heap usage: 17 allocs, 14 frees, 11,656 bytes allocated
+==187096== 
+==187096== 0 bytes in 1 blocks are definitely lost in loss record 1 of 3
+==187096==    at 0x4E050C5: malloc (vg_replace_malloc.c:442)
+==187096==    by 0x1099A6: create_array (array.c:9)
+==187096==    by 0x109347: main (main.c:34)
+==187096== 
+==187096== 364 bytes in 1 blocks are definitely lost in loss record 2 of 3
+==187096==    at 0x4E050C5: malloc (vg_replace_malloc.c:442)
+==187096==    by 0x1096E9: find_mesa (mesa.c:61)
+==187096==    by 0x1093EC: main (main.c:53)
+==187096== 
+==187096== 364 bytes in 1 blocks are definitely lost in loss record 3 of 3
+==187096==    at 0x4E050C5: malloc (vg_replace_malloc.c:442)
+==187096==    by 0x1096FC: find_mesa (mesa.c:62)
+==187096==    by 0x1093EC: main (main.c:53)
+==187096== 
+==187096== LEAK SUMMARY:
+==187096==    definitely lost: 728 bytes in 3 blocks
+==187096==    indirectly lost: 0 bytes in 0 blocks
+==187096==      possibly lost: 0 bytes in 0 blocks
+==187096==    still reachable: 0 bytes in 0 blocks
+==187096==         suppressed: 0 bytes in 0 blocks
+==187096== 
+==187096== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 0 from 0)
+==187096== 
+==187096== 2 errors in context 1 of 4:
+==187096== Invalid read of size 4
+==187096==    at 0x10950E: check_valid_mesa_in_range (mesa.c:15)
+==187096==    by 0x10974C: find_mesa (mesa.c:68)
+==187096==    by 0x1093EC: main (main.c:53)
+==187096==  Address 0x5243600 is 0 bytes after a block of size 320 alloc'd
+==187096==    at 0x4E050C5: malloc (vg_replace_malloc.c:442)
+==187096==    by 0x1099A6: create_array (array.c:9)
+==187096==    by 0x109347: main (main.c:34)
+==187096== 
+==187096== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 0 from 0)

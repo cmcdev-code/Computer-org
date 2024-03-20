@@ -62,7 +62,7 @@ struct Mesa find_mesa(FILE *in, unsigned int *numbers, unsigned int count, unsig
     unsigned int *end_array = (unsigned int *)malloc(count * sizeof(unsigned int));
     unsigned int num_mesa = 0;
 
-    for (unsigned int i = 0; i < count - *length + 1; ++i)
+    for (unsigned int i = 0; i < count - *length ; ++i)
     {
         unsigned int delta = 0;
         while (check_valid_mesa_in_range(numbers, i, i + *length + delta - 1, *height))

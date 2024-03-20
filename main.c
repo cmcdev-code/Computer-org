@@ -54,6 +54,7 @@ int main(int argc, char* argv[])
 		fprintf(out,"Min Length: %d  Min Height: %d\n", length, height);
 		display_data(out, size, numbers);
 		display_mesa(out, m);
+		
 		free_memory(numbers);
 		
 
