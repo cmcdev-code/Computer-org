@@ -21,65 +21,46 @@ int main(int argc, char* argv[])
 		exit(1);
 	}
 
-	//open input and output files here
-	
-
-	//-------------------------------
-
-	//get data from input file in a format you can use it for the first set
-	//HINT: what functions are you creating in other files?
-	
-
-	//--------------------------------
-	
+	//Opening the files 
+	FILE* in = fopen( argv[1], "r" );
+	FILE* out = fopen( argv[2], "w" );
 
 	int set = 1;
 
 	while( !feof(in) )
 	{
+
+		unsigned int size=0;
+		unsigned int* numbers=create_array(in, &size);
+		if(size==0){
+			break;
+		}
 		//print header for each Mesa in output file
-		fprintf(out,"Set %d\n", set );
+		fprintf(out,"Set %d\n", set++ );
 		for ( int i = 0; i < 55; i++)
 			fputs("-", out);
 		fputs("\n", out);
 		//-----------------------------------------
 
 		
-		//find the largest Mesa
+
+
+		read_data(in, numbers, size);
+
+		unsigned int length;
+		unsigned int height;
+		
+		struct Mesa m = find_mesa(in, numbers, size, &length, &height);
+		fprintf(out,"Min Length: %d  Min Height: %d\n", length, height);
+		display_data(out, size, numbers);
+		display_mesa(out, m);
+		free_memory(numbers);
 		
 
-		//------------------------
-		
-		//print all necessary information about the minimum length and height of the Mesas
-		//print the largest Mesa if there is a valid one
-		//otherwise, print that there is no valid Mesa
-		//(see the examples in the assignment spec)
-
-
-		//------------------------
-		
-
-		//clean up any memory used for the first iteration
-
-		//------------------------
-
-		
-		//get data from input file in a format you can use it for the next set
-		//HINT: what functions are you creating in other files?
-	
-
-		//------------------------
 	}
 
-	//clean up memory for the last iteration
-	
-	//-----------------------
-
-
-	//close input and output files here
-	
-
-	//-----------------------
+	fclose(in);
+	fclose(out);
 
 	return 0;
 }

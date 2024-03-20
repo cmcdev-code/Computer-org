@@ -99,10 +99,10 @@ void display_mesa(FILE *out, struct Mesa m)
 {
     if (m.valid)
     {
-        fprintf(out, " Start End Height Weight\n %d %d %d %d", m.start, m.end, m.height, m.weight);
+        fprintf(out, "\nStart End Height Weight\n %d %d %d %d \n \n", m.start, m.end, m.height, m.weight);
     }
     else
     {
-        fprintf(out, "No valid mesa found\n");
+        fprintf(out, "\nNo valid mesa found\n\n");
     }
 }
