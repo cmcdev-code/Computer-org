@@ -52,6 +52,7 @@ struct Mesa find_mesa(FILE *in, unsigned int *numbers, unsigned int count, unsig
     // If length > count then there can't possibly be any valid mesa so early return
     if (*length > count)
     {
+
         m.valid = false;
         return m;
     }
@@ -62,10 +63,10 @@ struct Mesa find_mesa(FILE *in, unsigned int *numbers, unsigned int count, unsig
     unsigned int *end_array = (unsigned int *)malloc(count * sizeof(unsigned int));
     unsigned int num_mesa = 0;
 
-    for (unsigned int i = 0; i < count - *length ; ++i)
+    for (unsigned int i = 0; i < count - *length + 1; ++i)
     {
         unsigned int delta = 0;
-        while (check_valid_mesa_in_range(numbers, i, i + *length + delta - 1, *height))
+        while (i + *length + delta <= count && check_valid_mesa_in_range(numbers, i, i + *length + delta - 1, *height))
         {
             delta++;
         }
@@ -79,11 +80,12 @@ struct Mesa find_mesa(FILE *in, unsigned int *numbers, unsigned int count, unsig
     }
     if (num_mesa == 0)
     {
+        free(start_array);
+        free(end_array);
         m.valid = false;
         return m;
     }
 
-  
     unsigned int max_weight_index = find_max_mesa_weight_index(numbers, start_array, end_array, num_mesa);
     m.start = start_array[max_weight_index];
     m.end = end_array[max_weight_index];
